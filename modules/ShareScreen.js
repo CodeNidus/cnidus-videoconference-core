@@ -75,7 +75,7 @@ module.exports = () => {
             await this.parent.peerJsObject.screenShareConnection(false);
 
             if (stream) {
-                const tracks = stream.getTracks();
+                const tracks = stream?.getTracks();
 
                 tracks.forEach((track) => {
                     track.stop();
