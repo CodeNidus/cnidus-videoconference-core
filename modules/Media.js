@@ -255,7 +255,7 @@ module.exports = () => {
       const stream = item.srcObject;
 
       if (stream) {
-          const tracks = stream.getTracks();
+        const tracks = stream?.getTracks();
 
           tracks.forEach((track) => {
               track.stop();
