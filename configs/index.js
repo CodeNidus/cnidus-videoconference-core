@@ -20,5 +20,8 @@ export default {
   authorization: {
     url: '/',
     storage_token: 'cnidus.videoconference.laravel.token',
+  },
+  aws: {
+    bucket_name: 'video-conference-bucket-a',
   }
 }

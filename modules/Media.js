@@ -166,20 +166,18 @@ module.exports = () => {
         }
 
         resolve(processedMedia);
-      }).catch(error => {
-        let message = null;
+        }).catch(error => {
+          let message = null;
 
-        for (const item of errors) {
-          if (item.name.includes(error.name)) {
-            message = item.message;
-            break;
+          for (const item of errors) {
+            if (item.name.includes(error.name)) {
+              message = item.message;
+              break;
+            }
           }
-        }
 
-        console.log(error.name);
-
-        reject(message || error.name);
-      });
+          reject(message || error.name);
+        });
     });
   }
 
@@ -257,11 +255,11 @@ module.exports = () => {
       const stream = item.srcObject;
 
       if (stream) {
-        const tracks = stream.getTracks();
+          const tracks = stream.getTracks();
 
-        tracks.forEach((track) => {
-          track.stop();
-        });
+          tracks.forEach((track) => {
+              track.stop();
+          });
       }
 
     }
@@ -412,9 +410,9 @@ module.exports = () => {
     if (type === 'video' && !this.parent.userSettings.camDisable) {
       Media.release()
       Media.grab(
-          Media.devices,
-          this.parent.userSettings.camDisable,
-          this.parent.userSettings.micDisable
+        Media.devices,
+        this.parent.userSettings.camDisable,
+        this.parent.userSettings.micDisable
       ).then(media => {
         Media.streamVideo(null, media);
         Media.resetConnectionsVideoAudioMedia(media);

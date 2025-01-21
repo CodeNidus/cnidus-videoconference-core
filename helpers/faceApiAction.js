@@ -8,7 +8,6 @@ module.exports = (options) => {
         this.token = options.token
         this.configs = options.configs
         this.media = options.media
-        this.storageName = 'cnidus.videoconference.canvasTextAction'
 
         this.faceApi = {
             drawItems: ['hat', 'medal'],
@@ -116,17 +115,35 @@ module.exports = (options) => {
         }
     }
 
+    Helper.getImagesFromBucket = (roomId) => {
+        return new Promise((resolve, reject) => {
+            console.log('yoho!')
+            this.token.getToken((token) => {
+                this.axios.get('/api/bucket/images-list?roomId=' + roomId, {
+                    headers: {
+                        'user-token': token
+                    }
+                }).then(response => {
+                    let files = response.data.files
 
-
-    Helper.getTextFromStorage = () =>  {
-        let store = JSON.parse(localStorage.getItem(this.storageName))
-        return (!store) ? [] : store.history;
+                    let hatIndex = Helper.searchInArray('hat.png', files)
+                    if (hatIndex > -1) {
+                        this.images.hat.src = 'https://' + this.configs.aws.bucket_name + '.s3.amazonaws.com/' + files[hatIndex]
+                    }
+                }).finally(() => {
+                    resolve(true)
+                })
+            })
+        }).catch(error => {
+            return error
+        })
     }
 
-    Helper.storeTextInStorage = (items) =>  {
-        localStorage.setItem(this.storageName, JSON.stringify({
-            history: items
-        }))
+    Helper.searchInArray = (text, strArray) => {
+        for (var j=0; j<strArray.length; j++) {
+            if (strArray[j].match(text)) return j;
+        }
+        return -1;
     }
 
     return Helper.setup()
