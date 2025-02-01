@@ -6,6 +6,7 @@ module.exports = ({axios, configs}, self) => {
     Helper.setup = ({axios, configs}, self) => {
         this.axios = axios
         this.configs = configs
+		this.options = self.options
         this.overrides = self.overrides
         this.media = self.Media
         this.token = {}
@@ -21,6 +22,7 @@ module.exports = ({axios, configs}, self) => {
             global: require('./globalHelper')(this),
             canvasTextAction: require('./canvasTextAction')(this),
             faceApiAction: require('./faceApiAction')(this),
+			ui: require('./uiHelper')(this),
         }
     }
 
