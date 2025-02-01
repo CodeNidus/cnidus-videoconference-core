@@ -117,7 +117,6 @@ module.exports = (options) => {
 
     Helper.getImagesFromBucket = (roomId) => {
         return new Promise((resolve, reject) => {
-            console.log('yoho!')
             this.token.getToken((token) => {
                 this.axios.get('/api/bucket/images-list?roomId=' + roomId, {
                     headers: {
