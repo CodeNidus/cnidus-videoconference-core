@@ -1,6 +1,6 @@
 {
   "name": "cnidus-videoconference-core",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "dependencies": {
     "axios": "^0.21",
 	"file-loader": "^6.2.0",

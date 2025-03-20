@@ -14,7 +14,7 @@ module.exports = () => {
       this.initial = true;
       this.fontRatio = 0.05;
       this.fontName = 'Roboto';
-      this.fontColor = "rgba(255, 255, 191, 1)"
+      this.fontColor = "rgba(15, 23, 42, 1)"
       this.intervalTime = 15;
 
       this.x = 0;

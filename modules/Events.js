@@ -77,8 +77,8 @@ module.exports = () => {
       this.parent.callbackAction('leftRoom', data, 'user disconnected.');
     });
 
-    this.socket.on('room-id-invalid', () => {
-      this.parent.callbackAction('invalidRoom', {}, 'room id is invalid!');
+    this.socket.on('room-id-invalid', (data) => {
+      this.parent.callbackAction('invalidRoom', data, 'room id is invalid!');
     });
 
     this.socket.on('run-action', (action) => {

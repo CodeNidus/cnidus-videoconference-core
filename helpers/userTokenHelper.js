@@ -87,12 +87,8 @@ module.exports = (options) => {
     }
 
     Helper.removeToken = () => {
-        localStorage.setItem(this.storageName, JSON.stringify({
-            username: null,
-            token: null,
-            roomId: null,
-            expired: null,
-        }));
+        this.webrtcToken = null
+        localStorage.removeItem(this.storageName)
     }
 
     Helper.setToken = (tokenData) => {
